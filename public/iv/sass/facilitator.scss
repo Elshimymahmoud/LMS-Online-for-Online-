@@ -1,0 +1,182 @@
+.about{
+    .about-overlay{
+        .about-content{
+            .disc-about{
+                .grid-6{
+                    line-height: 24px;
+                    font-size: 16px;
+                }
+            }
+            .join{
+                .head-join{
+                    border: 1px solid #f0f0f0;
+                    background-color: #f8f8f8;
+                    cursor: pointer;
+                    h4{
+                        width: 100%;
+                        text-align: center;
+                        margin-bottom: 0;
+                        position: relative;
+                        color: #666;
+                        font-size: 15px;
+                        font-weight: 700;
+                        letter-spacing: -.2px;
+                        text-transform: uppercase;
+                        line-height: 15px;
+                        padding: 14px 20px;
+                        .span-icon{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 46px;
+                            height: 100%;
+                            line-height: 45px;
+                            text-align: center;
+                        }
+                    }
+                }
+                .body-join{
+                    overflow: hidden;
+                    height: 0;
+                    transition: .35s all ease;
+                    .body-content{
+                        border: 1px solid #f0f0f0;
+                        padding: 14px 20px;
+                        background-color: #f8f8f8;
+                        form{
+                            .form-group{
+                                padding: 10px 0;
+                                margin: 0;
+                                label{
+                                    display: block;
+                                    font-weight: 700;
+                                    font-size: 16px;
+                                    float: none;
+                                    line-height: 1.3;
+                                    margin: 0 0 4px 0;
+                                    padding: 0;
+                                    color: #aaa;
+                                }
+                                .form-control{
+                                    color: #333;
+                                    font-size: 16px;
+                                    border: 1px solid #ccc;
+                                    height: 38px;
+                                    width: 100%;
+                                    line-height: 1.3;
+                                    border-radius: 0;
+                                    outline: none;
+                                    box-shadow: none;
+                                    &.phone-input{
+                                        padding-left: 50px;
+                                    }
+                                    &:focus{
+                                        &::placeholder{
+                                            color: $whiteColor;
+                                        }
+                                    }
+                                }
+                                ul.checkboxs{
+                                    margin: 0;
+                                    padding: 0;
+                                    li{
+                                        margin-bottom: 5px;
+                                        display: inline-block;
+                                        padding-right: 0px;
+                                        width: 33%;
+                                        label{
+                                            display: inline;
+                                            vertical-align: baseline;
+                                            font-size: 16px;
+                                            font-weight: 400;
+                                            line-height: 1.3;
+                                            color: #aaa;
+                                        }
+                                        input{
+                                            height: auto;
+                                            width: auto;
+                                            border: 0;
+                                        }
+                                    }
+                                }
+                                .drag{
+                                    border: 1px dashed #ccc;
+                                    border-radius: 2px;
+                                    background: #fcfcfc;
+                                    padding: 20px;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    position: relative;
+                                    #text{
+                                        position: relative;
+                                        p{
+                                            font-size: 15px;
+                                            line-height: 22.5px;
+                                            margin-bottom: 0;
+                                        }
+                                        img{
+                                            display: inline-block;
+                                        }
+                                        .data{
+                                            display: inline-block;
+                                            line-height: 50px;
+                                            .d-size{
+                                                color: #888;
+                                                font-size: 12px;
+                                                line-height: 24px;
+                                            }
+                                            .d-name{
+                                                font-size: 14px;
+                                                line-height: 24px;
+                                            }
+                                            .remove{
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                font-size: 20px;
+                                                color: #666;
+                                                width: 20px;
+                                                height: 20px;
+                                                display: block;
+                                                font-weight: 900;
+                                                transition: $transition;
+                                                cursor: pointer;
+                                                opacity: .5;
+                                                line-height: 20px;
+                                                &:hover{
+                                                    opacity: 1;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                span#field{
+                                    color: #990000;
+                                    font-size: 12px;
+                                }
+                                button{
+                                    padding: 10px 15px;
+                                    cursor: pointer;
+                                    font-size: 16px;
+                                    font-weight: 400;
+                                    line-height: 24px;
+                                    color: $whiteColor;
+                                    background-color: $mainColor;
+                                    outline: none;
+                                    box-shadow: none;
+                                    border: 0;
+                                }
+                                .iti{
+                                    width: 100%;
+                                }
+                            }
+                        }
+                    }
+                    &.active{
+                        height: 555px;
+                    }
+                }
+            }
+        }
+    }
+}

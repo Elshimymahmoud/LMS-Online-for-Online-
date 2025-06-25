@@ -1,0 +1,213 @@
+/*------------ RTL VERSION --------------*/
+
+.navbar-right {
+    float: left;
+}
+ul{
+    list-style-type: none !important;
+}
+.navbar-right {
+    margin-right: 10px;
+}
+.footer-menu{
+    display: inline-block;
+}
+.footer-menu li a {
+    padding: 0;
+    float: left !important;
+    font-weight: bold;
+    color: #939393;
+}
+.footer-menu li a:hover {
+
+    color: #4b0617;
+}
+.footer-menu li  {
+    padding: 0;
+    float: left !important;
+    margin-left: 20px;
+}
+.footer-top,.footer-top div{
+    text-align: center;
+}
+.footer-top-links.nav>li>a{
+    padding: 5px 0;
+}
+.footer-top-menu.nav>li>a{
+    padding: 0px 0;
+}
+.footer-top-menu {
+    padding-inline-start: 20px;
+    list-style: none !important;
+}
+.footer-top a{
+    color: #939393;
+    font-weight: 500;
+}
+.left-align{
+    text-align: left;
+}
+.work-process + .work-process:before {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+    float: left;
+}
+
+.the-watch-features ul li:before {
+    margin-left: 17px;
+    float: left;
+}
+
+.section-header.v3 {
+    text-align: left;
+}
+
+.split-column .texts .texts-inner {
+    padding-right: 0;
+    padding-left: 37px;
+}
+
+.timeline-post .half-side {
+    text-align: right;
+}
+
+.timeline-post .half-side + .half-side {
+    text-align: left;
+}
+
+.timeline-post .half-side.content {
+    padding-left: 40px;
+}
+
+.timeline-post .half-side + .half-side:before {
+    right: auto;
+    left: -12px;
+}
+
+.timeline-post.has-content.odd .half-side {
+    float: right;
+}
+
+.timeline-post.has-content.odd .half-side {
+    float: right;
+}
+
+.timeline-post.has-content.odd .half-side {
+    text-align: left;
+}
+
+.timeline-post .half-side.date {
+    padding-left: 35px;
+}
+
+.timeline-post.has-content.odd .half-side:before {
+    right: auto;
+    left: -12px;
+}
+
+.timeline-post.has-content.odd .half-side + .half-side {
+    text-align: right;
+}
+
+.timeline-post.has-content.odd .half-side.content {
+    padding-left: 15px;
+    padding-right: 45px;
+}
+
+.timeline-post.has-content.odd .half-side.date {
+    padding-left: 35px;
+    padding-right: 15px;
+}
+
+.newsletter-form .input-group-addon button,.newsletter-form .input-group-addon {
+   
+    border-radius:50px;
+    border-top-right-radius: 50px !important;
+    border-bottom-right-radius: 50px !important;
+    background: #000;
+}
+
+.newsletter-email{
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+}
+
+.newsletter-form .input-group-addon button img {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.newsletter-form p img {
+    margin-right: 8px;
+}
+
+.contact-box ul li {
+    padding-left: 30px;
+}
+
+.contact-box ul li i {
+    float: left;
+    margin-left: -30px;
+}
+
+
+.pagination li + li {
+    margin-left: 15px;
+    margin-right: 0;
+  }
+  
+/*Product Popup*/
+
+.product-img-gallery {
+    float: left;
+}
+
+.product-desc {
+    float: left;
+}
+
+.carousel-indicators {
+    left: 50%;
+    right: 0;
+}
+
+.mfp-content {
+    text-align: left;
+}
+.pagination li {
+    float: left;
+}
+
+.the-product.details .course-content .teacher-img-parent{
+    margin-left: 10px !important;
+    margin-right: 25px;
+    left:0;
+}
+
+.the-product.details .course-content .teacher-icon-download{
+    margin-right: 10px !important;
+    margin-left: 25px;
+    right:0;
+}
+
+.course-location .title{
+    float: left !important;
+}
+.course-location .title {
+    margin-right: 0 !important;
+    margin-left: 38px;
+}
+.course-location  .btn{
+    padding: 2px 15px 0 !important;
+}
+i.mb-14 {
+    padding: 0 5px 0 15px !important;
+}

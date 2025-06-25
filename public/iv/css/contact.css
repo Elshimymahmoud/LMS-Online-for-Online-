@@ -1,0 +1,43 @@
+.contact-address-details .address-icon {
+    font-size: 35px;
+    color: #3bcfcb!important;
+    display: inline-block;
+    float: right;
+    letter-spacing: -1px;
+}
+
+.address-details ul {
+    list-style: none;
+}
+
+.address-details {
+    display: inline-block;
+    float: right;
+    max-width: 80%;
+}
+
+.address-details h5 {
+    line-height: 20px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e1e2e4 !important;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.contact-address-details {
+    display: inline-block;
+    width: 100%;
+}
+.color-primary{
+    color: ##3bcfcb;
+}
+.submit{
+    background-color: #4f198d;
+    padding: 10px;
+    color: white;
+    border-radius: 16px;
+}

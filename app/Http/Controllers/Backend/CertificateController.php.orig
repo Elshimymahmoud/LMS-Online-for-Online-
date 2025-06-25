@@ -1,0 +1,490 @@
+<?php
+
+namespace App\Http\Controllers\Backend;
+
+use App\Http\Controllers\Controller;
+use App\Jobs\SendEmailJob;
+use App\Mail\certificateEmail;
+use App\Models\Certificate;
+use App\Models\Course;
+use App\Models\UserCourseRate;
+use App\Models\UserCourseForm;
+
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Storage;
+use Milon\Barcode\DNS2D;
+use App\Models\Auth\User;
+use App\Models\CourseForms;
+use App\Models\CourseLocation;
+
+class CertificateffController extends Controller
+{
+    
+    public function __construct()
+    {
+
+        $path = 'frontend';
+        if (session()->has('display_type')) {
+            if (session('display_type') == 'rtl') {
+                $path = 'frontend-rtl';
+            } else {
+                $path = 'frontend';
+            }
+        } else if (config('app.display_type') == 'rtl') {
+            $path = 'frontend-rtl';
+        }
+        $this->path = $path;
+    }
+
+    /**
+     * Get certificates lost for purchased courses.
+     */
+    public function getCertificates()
+    {
+
+        $certificates = auth()->user()->certificates;
+
+        return view('backend.certificates.index', compact('certificates'));
+    }
+
+    /**
+     * Generate certificate for completed course
+     */
+    public function generateCertificate(Request $request)
+    {
+       
+        
+        // get all course form type rate of this course
+        $courseFormsRate=CourseForms::where('course_id',$request->course_id)->whereHas('test',function($query){
+            $query->where('form_type', 'rate')->where('type','=','student');
+        })->pluck('forms_id')->toArray();
+        // dd($courseFormsRate);
+        // $UserCourseRates=UserCourseRate::where('user_id',auth()->user()->id)->where('course_id',$request->course_id)->first();
+        // $UserCourseRates=UserCourseForm::where('user_id',auth()->user()->id)->where('course_id',$request->course_id)->first();
+        $UserCourseRates=UserCourseForm::where('user_id',auth()->user()->id)
+                        ->where('course_id',$request->course_id)
+                        ->whereIn('form_id',$courseFormsRate)
+                        ->get();
+       
+        // if(empty($UserCourseRates->id))
+        if(count($UserCourseRates)!=count($courseFormsRate))
+        return redirect()->route('courses.rate',['course_id'=>$request->course_id,'course_location_id'=>$request->course_location_id])->withFlashSuccess(trans('alerts.frontend.course.rate'));
+
+  
+        $course = Course::whereHas('students', function ($query) {
+            $query->where('id', \Auth::id());
+        })->where('id', '=', $request->course_id)->first();
+        
+        if (($course != null) && ($course->progress() == 100)) {
+            $serial = $this->GenerateSerial();
+            // dd($this->checkifSerialexist($serial));
+
+            while ($this->checkifSerialexist($serial)) {
+                $serial = $this->GenerateSerial();
+           
+                
+            }
+
+                $certificate = Certificate::firstOrCreate([
+                    'user_id' => auth()->user()->id,
+                    'course_id' => $request->course_id,
+                    'type' => session('locale'),
+                    // 'SN' => $serial,
+                ]);
+                $certificate->SN=$serial;
+               
+                // dd($certificate);
+
+                $certificate_name = 'Certificate-' . $course->id . '-' . auth()->user()->id .'-'.session('locale').'.pdf';
+                $Qr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id .'-'.session('locale');
+                $certificate->name = auth()->user()->id;
+                $certificate->url = $certificate_name;
+                $certificate->save();
+                
+            
+
+    
+                // /////Arabic cerificate//////
+                $serial = $this->GenerateSerial();
+                while ($this->checkifSerialexist($serial)) {
+                    $serial = $this->GenerateSerial();
+                }
+
+           
+
+            // ///////////////////////////generate qr///////////////
+                Storage::disk('Qr')->put("qrCodes/" . $Qr_name . '.svg', DNS2D::getBarcodeSVG(asset('storage/certificates/' . $certificate_name), 'QRCODE'));
+          
+            // /////////////////////////////Generate certificate PDF AR and EN///////////
+            $html_url=route('certificates.show',['certificate'=>$certificate->id]);
+            // $html_url="https://courses.e-9.co/test-cert";  //for local test
+          
+            save_pdf($html_url,$certificate_name);
+            $content=[];
+            $content['user']=auth()->user();
+            $content['cert']=$certificate;
+
+            // dispatch(new SendEmailJob(auth()->user()->email,$content,'generate_certificate'));
+           \Mail::to(auth()->user()->email)->send(new certificateEmail($content));
+                   
+            return redirect()->route('certificate.success',['certificate'=>$certificate->id])->withFlashSuccess(trans('alerts.frontend.course.completed'));
+
+            
+        }
+       
+        
+        return abort(404);
+    }
+    public function showCertificates($certificate,$direct=false)
+    {
+      
+        $certificate = Certificate::findOrFail($certificate);
+        $course = Course::findOrFail($certificate->course_id);
+
+        $teachers=implode(',', $course->teachers->pluck('fullname')->toArray());
+ 
+        $user=User::findOrFail($certificate->user_id);
+         // $location=CourseLocation::where(['user_id'=>$user->id,'course_id'=>$course->id])->first();
+        $courseLocId=$course->whereHas('students', function ($query) use($user) {
+          
+            $query->where('course_student.user_id', $user->id);
+        })->first()->students()->first()->pivot->course_location_id;
+        $location=CourseLocation::findOrFail($courseLocId);
+
+        // get month in arabic
+        $courseStartDate=Carbon::parse($location->start_date)->format('Y-M-d');
+        $NowDate=Carbon::now()->format('Y-M-d');
+        if($certificate->type=="ar"){
+        $MonthStart=$this->getMonthInArabic($courseStartDate);
+        $MonthNow=$this->getMonthInArabic($NowDate);
+        }
+        else{
+            $MonthStart=Carbon::parse($location->start_date)->format('M');
+        $MonthNow=Carbon::now()->format('M');
+        }
+
+        $data = [
+            'name' => $user->name,
+            'name_ar' => $user->name_ar,
+
+            'course_name' => $course->title,
+            'date' => Carbon::now()->format('d/m/Y'),
+            // //////new data///
+            'course_name_ar' => $course->title_ar ,
+            'end_date' => Carbon::now()->format('d').' '.$MonthNow.' '.Carbon::now()->format('Y'),
+            'start_date' =>Carbon::parse($location->start_date)->format('d').' '.$MonthStart,
+            'end_date_en' => Carbon::now()->format('d').' '.Carbon::now()->format('M').' '.Carbon::now()->format('Y'),
+            'start_date_en' =>Carbon::parse($location->start_date)->format('d').' '.Carbon::parse($location->start_date)->format('M'),
+            'user' => $user,
+            'location'=>$location->location,
+            'teachers'=>$teachers
+        ];
+        $Qr_name = 'Certificate-' . $course->id . '-' . $user->id .'-'.$certificate->type;
+
+
+        if($certificate->type=="ar"){
+            if($course->type_id==3){//حضوري
+                return  view('certificate.index-ar-direct', compact('certificate', 'data','Qr_name','direct'));
+
+            }
+            else
+            return  view('certificate.index-ar', compact('certificate', 'data','Qr_name','direct'));
+        }
+        else{
+            if($course->type_id==3){//حضوري
+                return  view('certificate.index-ar-direct', compact('certificate', 'data','Qr_name','direct'));
+
+            }
+        return  view('certificate.index-en', compact('certificate', 'data','Qr_name','direct'));
+        }
+               
+    }
+      
+public function getMonthInArabic($date){
+    $months = array(
+        "Jan" => "يناير",
+        "Feb" => "فبراير",
+        "Mar" => "مارس",
+        "Apr" => "أبريل",
+        "May" => "مايو",
+        "Jun" => "يونيو",
+        "Jul" => "يوليو",
+        "Aug" => "أغسطس",
+        "Sep" => "سبتمبر",
+        "Oct" => "أكتوبر",
+        "Nov" => "نوفمبر",
+        "Dec" => "ديسمبر"
+    );
+    
+   
+    
+    $en_month = date("M", strtotime($date));
+    
+    $ar_month = $months[$en_month];
+    
+   return $ar_month;
+}
+    
+    /**
+     * Download certificate for completed course
+     */
+    public function download(Request $request)
+    {
+        $certificate = Certificate::findOrFail($request->certificate_id);
+        if ($certificate != null) {
+            $file = public_path() . "/storage/certificates/" . $certificate->url;
+            return Response::download($file);
+        }
+        return back()->withFlashDanger('No Certificate found');
+
+    }
+
+    /**
+     * Get Verify Certificate form
+     */
+    public function getVerificationForm()
+    {
+        return view($this->path . '.certificate-verification');
+    }
+
+    /**
+     * Verify Certificate
+     */
+    public function verifyCertificate(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required',
+            'date' => 'required',
+        ]);
+
+        $certificates = Certificate::where('name', '=', $request->name)
+            ->where(DB::raw("(DATE_FORMAT(created_at,'%Y-%m-%d'))"), "=", $request->date)
+            ->get();
+        $data['certificates'] = $certificates;
+        $data['name'] = $request->name;
+        $data['date'] = $request->date;
+        session()->forget('certificates');
+        return back()->with(['data' => $data]);
+
+    }
+
+    /**
+     * Generate certificate for completed course
+     */
+    public function show($id, Request $request)
+    {
+       
+        $certificateAr = Certificate::where('id', $id)->with(['user', 'course'])->first();
+        // $clientQrCode = $this->createQrCode('https://drive.google.com/file/d/1yGxU77E8cK9Hbn70CZS2BQKtENz2Fx5-/view?usp=sharing');
+        dd($id,'dddd',$certificateAr);
+        $course=Course::find($certificateAr->course_id);
+       
+        $QrAr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-ar';
+        $location=CourseLocation::where(['user_id'=>auth()->user()->id,'course_id'=>$course->id])->first();
+        
+        $data = [
+            'name' => auth()->user()->name,
+            'name_ar' => auth()->user()->name_ar,
+
+            'course_name' => $course->title,
+            'course_name_ar' => $course->title_ar,
+            'date' => Carbon::now()->format('d M, Y'),
+
+            'end_date' => Carbon::now()->format('d M, Y'),
+            'start_date' => Carbon::parse($location->start_date)->format('d M, Y'),
+            'user' => auth()->user(),
+        ];
+       
+        return view('certificate.index-ar', compact('certificateAr', 'data','QrAr_name'));
+    }
+
+    public function GenerateSerial()
+    {
+        // $CertificateNUM = Certificate::count();
+        // $sn = '';
+        // $sn.=''.str_pad($CertificateNUM  + 1, 13, "202000", STR_PAD_LEFT);
+       
+       $allCert=Certificate::all();
+       $count=count($allCert);
+       $lastCertCount=$count==0?0:$count;
+       
+        $sn = '';
+        $sn.=''.str_pad($lastCertCount  + 1, 13, "202000", STR_PAD_LEFT);
+        // $chars = array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        // $max = count($chars) - 1;
+        // for ($i = 0; $i < 10; $i++) {
+        //     //  $sn .= (!($i % 5) && $i ? '-' : '').$chars[rand(0, $max)];
+        //     $sn .= (!($i % 5) && $i ? '' : '') . $chars[rand(0, $max)];
+        // }
+        // $sn .= '-' . ($CertificateNUM + 1);
+
+        return $sn;
+    }
+
+    // Check if it exists, then re-generate
+
+    public function checkifSerialexist($serial)
+    {
+        $CertificateNUM = Certificate::where('SN', $serial)->count();
+        return ($CertificateNUM > 0);
+    }
+
+    public function success()
+    {      
+        return view('frontend.courses.success');
+    }
+
+    
+    /**
+     * Generate certificate for completed course
+     */
+    public function generateTestDomCertificate()
+    {
+        $course = Course::where('id', '=', 81)->first();
+            $serial = $this->GenerateSerial();
+            while ($this->checkifSerialexist($serial)) {
+                $serial = $this->GenerateSerial();
+            }
+            $certificate = Certificate::firstOrCreate([
+                'user_id' => auth()->user()->id,
+                'course_id' => 81,
+                'type' => 'en',
+                'SN' => $serial,
+            ]);
+            $location=CourseLocation::where(['user_id'=>auth()->user()->id,'course_id'=>$course->id])->first();
+
+            $data = [
+                'name' => auth()->user()->name,
+                'name_ar' => auth()->user()->name_ar,
+
+                'course_name' => $course->title,
+                'date' => Carbon::now()->format('d/m/Y'),
+                // //////new data///
+                'course_name_ar' => $certificate->course->title_ar,
+                'end_date' => Carbon::now()->format('Y').' '.Carbon::now()->format('M d'),
+                'start_date' => Carbon::parse($location->start_date)->format('Y').' '.Carbon::parse($location->start_date)->format('M d'),
+                'user' => auth()->user(),
+            ];
+
+            $certificate_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-en' . '.pdf';
+            $Qr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-en';
+            $certificate->name = auth()->user()->id;
+            $certificate->url = $certificate_name;
+            $certificate->save();
+            // /////Arabic cerificate//////
+            $serial = $this->GenerateSerial();
+            while ($this->checkifSerialexist($serial)) {
+                $serial = $this->GenerateSerial();
+            }
+            $certificateAr = Certificate::firstOrCreate([
+                'user_id' => auth()->user()->id,
+                'course_id' => 81,
+                'type' => 'ar',
+                'SN' => $serial,
+            ]);
+
+            $certificateAr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-ar' . '.pdf';
+            $QrAr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-ar';
+            $certificateAr->name = auth()->user()->id;
+            $certificateAr->url = $certificateAr_name;
+            $certificateAr->SN = $serial;
+            $certificateAr->save();
+            // ///////////////////////////generate qr///////////////
+            Storage::disk('Qr')->put("qrCodes/" . $Qr_name . '.svg', DNS2D::getBarcodeSVG(asset('storage/certificates/' . $certificate_name), 'QRCODE'));
+            Storage::disk('Qr')->put("qrCodes/" . $QrAr_name . '.svg', DNS2D::getBarcodeSVG(asset('storage/certificates/' . $certificateAr_name), 'QRCODE'));
+            // /////////////////////////////Generate certificate PDF AR and EN///////////
+            PDF::setOptions(['defaultFont' => 'cairo']);
+            // $pdf = PDF::loadView('certificate.index-en', compact('data', 'certificate', 'Qr_name'))->setPaper('', 'landscape');
+            // $pdf->save(public_path('storage/certificates/' . $certificate_name));
+            $pdfArabic = PDF::loadView('certificate.index-test-ar', compact('data', 'certificateAr', 'QrAr_name'))->setPaper('', 'landscape');
+             $pdfArabic->save(public_path('storage/certificates/' . $certificateAr_name));
+           
+            // ////
+
+          
+            return view('certificate.index-test-ar', compact('certificateAr', 'data','QrAr_name'));
+           
+            
+            // return back()->withFlashSuccess(trans('alerts.frontend.course.completed'));
+        
+    }
+    
+    /**
+     * Generate certificate for completed course
+     */
+    public function generateTestCertificate()
+    {
+        
+        $course = Course::where('id', '=', 81)->first();
+            $serial = $this->GenerateSerial();
+            while ($this->checkifSerialexist($serial)) {
+                $serial = $this->GenerateSerial();
+            }
+            $certificate = Certificate::firstOrCreate([
+                'user_id' => auth()->user()->id,
+                'course_id' => 81,
+                'type' => 'en',
+                'SN' => $serial,
+            ]);
+            $location=CourseLocation::where(['user_id'=>auth()->user()->id,'course_id'=>$course->id])->first();
+
+            $data = [
+                'name' => auth()->user()->name,
+                'name_ar' => auth()->user()->name_ar,
+
+                'course_name' => $course->title,
+                'date' => Carbon::now()->format('d/m/Y'),
+                // //////new data///
+                'course_name_ar' => $certificate->course->title_ar,
+                'end_date' => Carbon::now()->format('Y').' '.Carbon::now()->format('M d'),
+                'start_date' => Carbon::parse($location->start_date)->format('Y').' '.Carbon::parse($location->start_date)->format('M d'),
+                'user' => auth()->user(),
+            ];
+
+            $certificate_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-en' . '.pdf';
+            $Qr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-en';
+            $certificate->name = auth()->user()->id;
+            $certificate->url = $certificate_name;
+            $certificate->save();
+            // /////Arabic cerificate//////
+            $serial = $this->GenerateSerial();
+            while ($this->checkifSerialexist($serial)) {
+                $serial = $this->GenerateSerial();
+            }
+            $certificateAr = Certificate::firstOrCreate([
+                'user_id' => auth()->user()->id,
+                'course_id' => 81,
+                'type' => 'ar',
+                'SN' => $serial,
+            ]);
+
+            $certificateAr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-ar' . '.pdf';
+            $QrAr_name = 'Certificate-' . $course->id . '-' . auth()->user()->id . '-ar';
+            $certificateAr->name = auth()->user()->id;
+            $certificateAr->url = $certificateAr_name;
+            $certificateAr->SN = $serial;
+            $certificateAr->save();
+            // ///////////////////////////generate qr///////////////
+            Storage::disk('Qr')->put("qrCodes/" . $Qr_name . '.svg', DNS2D::getBarcodeSVG(asset('storage/certificates/' . $certificate_name), 'QRCODE'));
+            Storage::disk('Qr')->put("qrCodes/" . $QrAr_name . '.svg', DNS2D::getBarcodeSVG(asset('storage/certificates/' . $certificateAr_name), 'QRCODE'));
+            // /////////////////////////////Generate certificate PDF AR and EN///////////
+
+            
+        $view = \View::make('certificate.index-test-ar', compact('data', 'certificateAr', 'QrAr_name'));
+        // return $view;
+        $html_content = $view->render();
+     
+
+       PDF::SetTitle('Sample PDF');
+       PDF::SetFont('dejavusans');
+       PDF::AddPage();
+       PDF::writeHTML($html_content, true, false, true, 'UTF-8', '');
+
+       PDF::Output(uniqid().'_SamplePDF.pdf', 'D');
+        
+    }
+
+}

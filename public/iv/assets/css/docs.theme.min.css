@@ -1,0 +1,105 @@
+
+
+
+#reviews .owl-carousel .item {
+    height: auto;
+}
+
+ 
+
+owl-prev {
+    width: 15px;
+    height: 100px;
+    position: absolute;
+    top: 40%;
+    margin-left: -20px;
+    display: block !important;
+    border:0px solid black;
+}
+
+.categories-sec .owl-next {
+    width: 35px;
+    height: 100%;
+    line-height: 100%;
+    position: absolute;
+    top: 0%;
+    right: -45px;
+    display: block !important;
+    border:0px solid black;
+    color: #fff;
+}
+.categories-sec .owl-prev {
+    width: 35px;
+    height: 100%;
+    position: absolute;
+    top: 0%;
+    left: -45px;
+    display: block !important;
+    border:0px solid black;
+    color: #fff;
+}
+.categories-sec .owl-next i,.categories-sec .owl-prev i{
+    margin-top: 100px;
+    color: rgba(0, 0, 0,.5) !important;
+}
+
+.locations .owl-next {
+    width: 35px;
+    position: absolute;
+    top: 0%;
+    right: -45px;
+    display: block !important;
+    border:0px solid black;
+    color: #fff;
+    background: transparent !important;
+}
+.locations .owl-prev {
+    width: 35px;
+    position: absolute;
+    top: 0%;
+    left: -45px;
+    display: block !important;
+    border:0px solid black;
+    color: #fff;
+    background: transparent !important;
+}
+
+.locations .owl-next i,.locations .owl-prev i{
+    margin-top: 100px;
+    color: #000 !important;
+}
+
+.owl-prev i, .owl-next i {
+    transform : scale(3,3); color: #ccc;
+}
+.home-slider .owl-next {
+    width: 35px;
+    position: absolute;
+    top: 30%;
+    right: 45px;
+    display: block !important;
+    border:0px solid black;
+    color: #fff;
+    background: transparent !important;
+}
+.home-slider .owl-prev {
+    width: 35px;
+    position: absolute;
+    top: 30%;
+    left: 45px;
+    display: block !important;
+    border:0px solid black;
+    color: #fff;
+    background: transparent !important;
+}
+
+.home-slider .owl-next i,.home-slider .owl-prev i{
+    margin-top: 100px;
+    color: #4f198d47 !important;
+    transform : scale(6,6); 
+    color: #ccc;
+}
+ 
+.home-slider .owl-next i:hover,.home-slider .owl-prev i:hover{
+    color: #4f198d !important;
+}

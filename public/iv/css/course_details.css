@@ -1,0 +1,321 @@
+@charset "UTF-8";
+/* ------------------------------------------------
+
+Page	: Proland CSS
+Version : 1.0
+Author  : Surjith S M
+URI     : http://themeforest.net/user/surjithctly
+
+Copyright © All rights Reserved
+Surjith S M / @surjithctly
+
+-------------------------------------------------- */
+/*=====================================================================
+
+
+@Default Styles
+
+Table of Content:
+01/ Prefix
+
+
+
+
+
+
+/* ==================================================================== */
+/* ============================course Intro Section======================================== */
+
+.course-content p{
+    font-size: 15px;
+    padding: 5px 0;
+    }
+    .color-primary{
+        color: #4f198d;
+        font-weight: bold;
+    }
+    .course-content h3{
+    color: #4f198d;
+    }
+    .course-content h4{
+        color: #4f198d;
+        }
+    .course-content h2{
+    color: #000;
+    margin-bottom: 50px;
+    }
+    .course-content .image{
+        width: 100%;
+        border-radius: 10px;
+    }
+    .course-content .btn-gray{
+
+    background-color: #cbcbcd;
+    font: 419 16px/46px "Noto Kufi Arabic", sans-serif;
+    color: black;
+    }
+    .course-content .rate-title{
+        float: right;
+        margin-top: 7px;
+        padding-right:5px ;
+        color: #aaaaaa;
+    }
+.course-content .rate-title.mr-3{
+        margin-right: 3px;
+    }
+.course-content  .add-star{
+        width: 46px;
+        position: absolute;
+    }
+.course-content  .plus-icon-star{
+        position: relative;
+        margin-top: 11px;
+        margin-right: 17px;
+        font-size: 12px;
+        color: black;
+
+}
+.prefer{
+    position: relative;
+    right: 13%;
+}
+
+.clear{
+        clear: both;
+    }
+.course-content.mt-0{
+    margin-top: 0 !important;
+}
+.course-content .mt-16{
+    margin-top: 16px !important;
+}
+.course-content .mt-18{
+    margin-top: 18px;
+    padding-inline-start: 0px;
+}
+.course-content .mt-15{
+    margin-top: 15px;
+}
+.course-content .mt-10{
+    margin-top: 10px;
+}
+.course-content .mt-10-per{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.course-content.mt-min-36{
+    margin-top: -36px !important;
+}
+.course-content h4{
+    color: #4f198d;
+}
+.course-content .course-det-list{
+    list-style: none;
+    border:1px solid #aaa;
+    padding: 10px;
+    border-radius: 8px;
+}
+.course-content .course-det-list li{
+    font: 304 16px/26px "Noto Kufi Arabic", sans-serif;
+}
+.course-content .course-det-list .title{
+    margin-left: 10px;
+    display: inline-block;
+    width: 100px;
+}
+.course-content .btn-xl{
+    width: 100% !important;
+    background-color: white;
+    color: gray;
+    display: flex;
+    justify-content: space-between;
+}
+.course-content  .pdf-icon{
+    width: 14%;
+    margin-top: 5px;
+}
+.course-content .pdf-icon-parent{
+    margin-right: 57px;
+    width:20%;
+}
+.course-content .course-location-container{
+    border-radius: 30px;
+    /* padding: 0 28px; */
+    width: 100%;
+    background-color: white;
+    color: gray;
+    display: flex;
+    justify-content: center;
+    font-size: revert;
+    align-content: space-around;
+}
+.fl-r{
+    float: right;
+    margin-left: 9px;
+}
+
+.course-location .icon{
+    position: absolute;
+    margin-right: 7px;
+    margin-top: 8px;
+}
+
+.course-location-container div{
+    /* width: 20% */
+    /* width: 24% */
+
+}
+
+.course-location-container div:last-child{
+    text-align: end;
+    margin: 0 4px;
+}
+
+
+.course-location .icon-price{
+    transform: rotate(279deg);
+}
+.course-location .title{
+    margin-right: 45px;
+}
+.course-location .btn-get-course
+{
+    font: 310 12px/38px "Noto Kufi Arabic", sans-serif;
+    margin-top: 3px;
+    /* margin-top: -1px; */
+
+    width: 100%;
+}
+.link-border{
+    border-style: solid;
+    border-width: 1px;
+}
+/* /////////////Course details And Curriclum */
+.the-product.details{
+    padding: 0px
+}
+.the-product.details .course-content h3,
+.the-product.details .course-content h4{
+    color: black;
+}
+.the-product.details .course-content .teacher-img-parent{
+        /* margin-left: 59px; */
+       
+}
+.the-product.details .course-content .teacher-img{
+    /* border-style: solid;
+    border-width: 1px;
+    width: 40px;
+    border-radius: 50%;
+    margin-top: 4px; */
+    border-style: solid;
+    border-width: 1px;
+    width: 40px;
+    height: 42px;
+    object-fit: cover;
+    border-radius: 53%;
+    /* margin-top: 2px; */
+    margin-top: 2px;
+    
+    margin-right: 5px;
+
+}
+.the-product.details .course-content .teacher{
+    padding: 0;
+   
+
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: fit-content;
+}
+.the-product.details .course-content .teacher-icon-download{
+    border-radius: 5px;
+    padding: 3px;
+    margin-right: 5px;
+    border-style: solid;
+    border-width: 1px;
+    color: #4f198d;
+    height: min-content;
+    margin-top: 12px;
+    margin-left: 10px;
+}
+.the-product.details .course-content .course-curriclum{
+    
+    background-color: #f1f1f1;
+    border-radius: 10px;
+    padding: 27px;
+}
+
+.the-product.details .course-content .course-curriclum .btn-curr{
+    width: 100%;
+    color: #4f198d;
+    border: none;
+    text-align: right;
+    font-weight: 600;
+    background-color: #f1f1f1;
+    padding: 0px;
+    outline: 0;
+}
+.the-product.details .course-content .curriclum-content{
+    margin-top: 35px;
+}
+.the-product.details .course-content .curriclum-content p{
+   font-size: 14px;
+}
+.display-content{
+    display: contents;
+}
+.mb-14{
+    margin-bottom: 14px;
+}
+i.mb-14{
+    margin-bottom: 10px !important;
+    padding: 0 5px;
+}
+.mb-7{
+    margin-bottom: 7px;
+}
+.the-product.details .course-content .course-curriclum .btn-curr:after {
+    content: "\f063";
+    font-family: 'FontAwesome';
+    font-weight: 900;
+    float: left;
+    border-style: solid;
+    padding: 2px;
+    border-radius: 4px;
+    border-width: 1px;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+.the-product.details .course-content .course-curriclum .btn-curr.collapsed:after {
+    content: "\f062";
+    font-family: 'FontAwesome';
+    font-weight: 900;
+    float: left;
+    border-style: solid;
+    padding: 2px;
+    border-radius: 4px;
+    border-width: 1px;
+    margin-right: 6px;
+    margin-left: 6px;
+  }
+  .w-24{
+      width: 20px;
+  }
+  .d-flex{
+      display: flex;
+  }
+  .mb-36{
+      margin-bottom: 36px;
+  }
+  .the-product.course-related{
+    padding: 44px 0 136px;
+  }
+  .d-grid.col-md-6{
+    display: grid;
+    justify-content: start !important;
+  }
+  /* .col-xs-10.d-grid-center{
+    justify-content: center;
+  } */

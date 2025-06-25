@@ -1,0 +1,32 @@
+.color-primary{
+    color: #7f3846;
+   
+}
+.plan img{
+    width: 100%;
+    padding:10px;
+    margin-bottom: 16px;
+    max-height: 230px
+}
+.plan .plan-text{
+    color: #9e9e9e;
+    padding: 10px
+    
+}
+.link{
+    text-decoration: underline;
+}
+img.img-header{
+    margin-bottom: 17px;
+    margin-top: 10px;
+    display: block;
+     margin-left: auto;
+     padding: 0px !important;
+      margin-right: auto;
+}
+.blog-box{
+    margin-bottom: 20px;
+}
+.team{
+    padding: 20px;;
+}

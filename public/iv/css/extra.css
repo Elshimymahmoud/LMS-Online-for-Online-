@@ -1,0 +1,302 @@
+
+.inner-contain {
+  padding: 5px;
+}
+.right-align {
+  text-align: left;
+}
+.inner-contain.title{
+  line-height: 32px;
+}
+.fw100 {
+  width: 100%;
+}
+
+.join-us-mt-30 {
+  margin-top: -30px;
+}
+
+.join-us-mt80 {
+  margin-top: 80px;
+}
+
+.join-us-mt100 {
+  margin-top: 100px;
+}
+
+.the-benefits {
+  background-color: #fdfaf1;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.clients{
+  direction: ltr;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 50px;
+}
+
+.partners{
+  direction: ltr;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 50px;
+}
+
+.categories-sec{
+  direction: ltr;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 50px;
+}
+
+.footer-top{
+  background: #f5f5f5;
+}
+
+.footer{
+  background:#e6e6e6
+}
+
+.white-color {
+  color: #ffffff;
+}
+
+.med-font{
+  font-size: 14px;
+}
+
+.mt-50{
+  margin-top: 50px;
+}
+
+.mb-30{
+  margin-bottom: 30px;
+}
+
+.footer .menu-rights {
+  padding: 35px 0 10px;
+}
+
+.red-bg{
+  background-color: #4f198d;
+}
+
+.center{
+  text-align: center;
+}
+.inline-block{
+  display: inline-block;
+}
+.btn-default {
+  margin-right: 0px;
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+
+.large-input{
+height: 60px;
+line-height: 60px;
+}
+.mtb-50{
+  margin:50px 0 ;
+}
+.rounded-50{
+  border-radius: 50px;
+}
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus {
+  z-index: 3;
+  color: #fff;
+  background-color: #7b3140;
+  border-color: #7b3140;
+  cursor: default;
+}
+.pagination>li>a:hover, .pagination>li>span:hover, .pagination>li>a:focus, .pagination>li>span:focus {
+  color: #7b3140;
+}
+.pagination>li>a, .pagination>li>span {
+  color: #7b3140;
+}
+@media (max-width: 767px) {
+  .nav-center ul.nav li a {
+    float: left;
+    padding: 0 10px;
+    border-radius: 60px;
+    font: 500 16px/55px "Noto Kufi Arabic", sans-serif;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .services-box {
+    margin-bottom: 20px;
+  }
+
+  .section-header {
+    margin-bottom: 10px;
+  }
+
+  .the-benefits {
+    padding: 10px 0;
+  }
+
+  .our-collection {
+    padding: 40px 0 40px;
+  }
+
+  .the-product {
+    padding: 40px 0 40px;
+  }
+
+  .m-b-40 {
+    margin-bottom: 0px !important;
+  }
+
+  .col-sm-2 {
+    width: 16.66666667%;
+  }
+
+  .col-sm-6 {
+    width: 100%;
+  }
+
+  .col-sm-10 {
+    width: 82.33333332%;
+  }
+
+  .col-sm-1,
+  .col-sm-2,
+  .col-sm-3,
+  .col-sm-4,
+  .col-sm-5,
+  .col-sm-6,
+  .col-sm-7,
+  .col-sm-8,
+  .col-sm-9,
+  .col-sm-10,
+  .col-sm-11,
+  .col-sm-12 {
+    float: right;
+  }
+
+  .split-column .texts .texts-inner {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .split-column .texts .texts-inner {
+    width: 100%;
+  }
+
+  #main-navbar .nav li a {
+    padding: 0;
+  }
+
+  #main-navbar .nav {
+    padding-right: 0;
+    margin-right: 0;
+  }
+
+  .navbar-default .navbar-collapse {
+    margin: 0;
+  }
+
+  
+.join-us-mt100 {
+  margin-top: 20px;
+}
+
+}
+
+
+/*  register.css  */
+
+.logo-register{
+  width: 59%;
+  padding: 10px;
+  margin-right: 13%;
+}
+.register-parent{
+  padding: 0px;
+}
+.register{
+  display: grid;
+  justify-content: center;
+  background-color: white;
+  border-radius: 10px;
+  border: 2px solid white;
+}
+.register-title1{
+ 
+  text-align: center;
+}
+.register-title{
+  color: #a0afaf;;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-group input{
+  padding: 10px;
+border: 2px #a0afaf solid;
+border-radius: 25px;
+width: 100%;
+color: #a0afaf;
+font-weight: bold;
+}
+.input-message{
+  font-size: 12px;
+  margin-bottom: 0px;
+}
+.register .form-group .fa{
+  position: absolute;
+  margin-top: 13px;
+  margin-right: -25px;
+}
+input.submit{
+  background-color:  #4f198d !important;
+  color: white;
+}
+.form-group a{
+  padding: 10px;
+  border: 2px #a0afaf solid;
+  border-radius: 25px;
+  width: 100%;
+  color: #a0afaf;
+  font-weight: bold;
+  display: block;
+}
+.ltr{
+  direction: ltr;
+  max-width: 100%;
+  overflow: hidden;;
+}
+.rtl{
+  direction: ltr;
+}
+.the-slider .item div{
+  -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+.the-slider .item div .container,.the-slider .item div .container .slider-content{
+  -moz-transform: scaleX(1);
+  -o-transform: scaleX(1);
+  -webkit-transform: scaleX(1);
+  transform: scaleX(1);
+  filter: '';
+  -ms-filter: "";
+}
+
+.course_banner,.course_banner .container .benefit-notes{
+  -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}

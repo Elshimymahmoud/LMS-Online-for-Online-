@@ -1,0 +1,38 @@
+.nav-center ul.nav li a {
+    float: left;
+    padding: 0 40px;
+    background-color: #4f198d;
+    border-radius: 13px !important;
+    color: white;
+    font: 500 20px/55px "Noto Kufi Arabic", sans-serif;
+}
+.head-welcome h2{
+    text-align: start;
+}
+.middle-welcome{
+    text-align: start;
+}
+.about-title{
+    text-align: center;
+    position: absolute;
+    margin-top: 56px;
+    margin-right: 27px;
+}
+.missions{
+    margin-top: 50px;
+}
+.list.active a{
+    color: #4f198d;
+    background-color: white;
+}
+.nav-center ul.nav li.active a{
+    color: #4f198d;
+    background-color: white;
+   
+}
+.plan img{
+    max-height: 228px;
+}
+.team{
+    padding: unset;
+}

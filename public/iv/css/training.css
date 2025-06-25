@@ -1,0 +1,158 @@
+.slide{
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.services-about .services-about-overlay .services-about-conetnt .service {
+    position: relative;
+    transition: .5s all ease;
+    min-height: 280px;
+    width: 100%;
+    cursor: pointer;
+    margin-bottom: 30px;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-front {
+    background: #efefef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: .5s all ease;
+    z-index: 2;
+    backface-visibility: hidden;
+    width: 100%;
+    height: 280px;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-front .front-content {
+    padding: 15px;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-front .front-content .icon {
+    color: ##3bcfcb;
+    font-size: 45px;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-front .front-content .title-icon {
+    margin: 15px 0 12px;
+    line-height: 20.8px;
+    font-size: 16px;
+    color: ##3bcfcb;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-back {
+    transition: .5s all ease;
+    z-index: 1;
+    transform: rotatey(180deg);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 280px;
+    background: #efefef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-back .back-content {
+    padding: 15px;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service .service-back .back-content p {
+    font-size: 16px;
+    font-weight: 400;
+    color: ##3bcfcb;
+    line-height: 24px;
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service:hover .service-front {
+    z-index: 1;
+    transform: rotateY(-180deg);
+}
+
+.services-about .services-about-overlay .services-about-conetnt .service:hover .service-back {
+    z-index: 2;
+    transform: rotateY(0deg);
+}
+
+/* .services-about.services-why .services-about-overlay .services-about-conetnt .service {
+    min-height: 410px;
+} */
+
+.services-about.services-why .services-about-overlay .services-about-conetnt .service .service-front {
+    background: ##3bcfcb;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt .service .service-front .front-content .icon {
+    color: #e2e2e2;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt .service .service-front .front-content .title-icon {
+    color: #e2e2e2;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt .service .service-back {
+    background: ##3bcfcb;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt .service .service-back .back-content p {
+    color: #e2e2e2;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt .service.about-why {
+    min-height: 280px;
+}
+
+.services-blocks{
+    margin-top: 50px;
+}
+.slide{
+    height: 200px;
+}
+.slide-content h1{
+    font-size: 45px;
+    color: white;
+    text-align: center;
+}
+.aligncenter{
+    
+    width: 100%;
+}
+.services-about.services-why .services-about-overlay .services-about-conetnt.part2 .service .service-front{
+    background-color: white;
+    color: ##3bcfcb;
+}
+/*  */
+.services-about.services-why .services-about-overlay .services-about-conetnt.part2 .service .service-front {
+    background: white;
+    border: 1px solid;
+    margin-top: 19px;
+    border-radius: 10px;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt.part2 .service .service-front .front-content .icon {
+    color: ##3bcfcb
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt.part2 .service .service-front .front-content .title-icon {
+    color: ##3bcfcb;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt.part2 .service .service-back {
+    background: ##3bcfcb;
+    border: 1px solid;
+    margin-top: 19px;
+    border-radius: 10px;
+}
+
+.services-about.services-why .services-about-overlay .services-about-conetnt.part2 .service .service-back .back-content p {
+    color: white;;
+}
+

@@ -1,0 +1,831 @@
+
+.model{
+    .close-popup{
+        left: auto;
+        right: 0;
+    }
+    .model-overlay{
+        .model-content{
+            .head-model{
+                ul{
+                    li{
+                        &::after{
+                            left: auto;
+                            right: 0;
+                        }
+                    }
+                }
+            }
+            .body-model{
+                .body-content{
+                    left: auto;
+                    right: 0;
+                    form{
+                        .form-group{
+                            input{
+                                &[type=checkbox]{
+                                    & ~ label{
+                                        padding-left: 0;
+                                        padding-right: 32px;
+                                        a{
+                                            margin-left: 0px;
+                                            margin-right: 10px;
+                                        }
+                                        &::after{
+                                            left: auto;
+                                            right: 0;
+                                        }
+                                        &::before{
+                                            left: auto;
+                                            right: 0;
+                                        }
+                                    }
+                                }
+                            }
+                            button[type=submit]{
+                                &::after{
+                                    left: auto;
+                                    right: 0;
+                                }
+                            }
+                        }
+                    }
+                    &.body-login{
+                        form{
+                            .form-group{
+                                input{
+                                    &[type=checkbox]{
+                                        & ~ label{
+                                            a{
+                                                margin-left: 0px;
+                                                margin-right: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.owl-carousel{
+    direction: ltr!important;
+}
+.menu,.search,.login-register{
+    .overlay{
+        left: 0;
+        right: auto;
+        padding-right: 30px;
+        padding-left: 0;
+        .content{
+            padding-right: 0;
+            padding-left: 30px;
+            .head{
+                h2{
+                    span{
+                        margin-right: 0;
+                        margin-left: 15px;
+                    }
+                }
+            }
+            .body{
+                ul{
+                    li{
+                        a{
+                            &.open-list{
+                                &::after{
+                                    right: auto;
+                                    left: 0;
+                                }
+                            }
+                        }
+                        ul{
+                            li{
+                                a{
+                                    &::before{
+                                        margin-right: 0;
+                                        margin-left: 5px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                &.login-register-body{
+                    ul{
+                        li{
+                            a{
+                                &.fave{
+                                    &::before{
+                                        right: 0;
+                                        left: 15px;
+                                    }
+                                }
+                            }
+                        }    
+                    }
+                }
+            }
+            .middle{
+                form{
+                    .form-group{
+                        input{
+                            padding-right: 0;
+                            padding-left: 80px;
+                        }
+                        button{
+                            right: auto;
+                            left: 0;
+                        }
+                    }
+                }
+            }
+        }
+        .close-popup{
+            left: auto;
+            right: -45px;
+        }
+    }
+}
+input{
+    text-align: right!important;
+}
+header{
+    .header-top{
+        .navbar{
+            .lang{
+                .lang-current{
+                    i{
+                        margin-left: 0;
+                        margin-right: 6px;
+                    }
+                }
+                .lang-want{
+                    left: auto;
+                    right: 0;
+                    text-align: right;
+                }
+            }
+            .menu-list{
+                .menu-links{
+                    margin-right: 0;
+                    margin-left: 40px;
+                    ul{
+                        .list-item{
+                            ul{
+                                left: auto;
+                                right: 0;
+                                li{
+                                    a{
+                                        padding: 6px 34px 6px 22px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .menu-social{
+                    ul{
+                        .item-social{
+                            margin-right: 0;
+                            margin-left: 15px;
+                            &:last-child{
+                                margin-left: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .header-bottom{
+        .header-bottom-content{
+            .search-courses{
+                .bars{
+                    span{
+                        padding-right: 0;
+                        padding-left: 12px;
+                    }
+                    ul{
+                        left: auto;
+                        right: 0;
+                    }
+                }
+                form{
+                    margin-right: 0;
+                    margin-left: 30px;
+                    input{
+                        padding-left: 80px;
+                        padding-right: 12px;
+                    }
+                    button{
+                        right: auto;
+                        left: 0;
+                    }
+                    .found{
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+            .login{
+                ul{
+                    li{
+                        &:first-child{
+                            a{
+                                i{
+                                    margin-right: 0;
+                                    margin-left: 3px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.sliders{
+    .sliders-overlay{
+        .swiper-slide{
+            padding: 100px 80px 50px 0px;
+            .slide-content{
+                .anchor{
+                    a{
+                        i{
+                            margin-right: 0;
+                            margin-left: 3px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.training{
+    .training-overlay{
+        .training-body{
+            .links{
+                ul{
+                    li{
+                        &:first-child{
+                            border-top-left-radius: 0;
+                            border-top-right-radius: 8px;
+                        }
+                        &:last-child{
+                            border-top-right-radius: 0;
+                            border-top-left-radius: 8px;
+                        }
+                    }
+                }
+            }
+            .training-content{
+                .training-found{
+                    .more{
+                        &:hover{
+                            &::after{
+                                left: 0;
+                                right: auto;
+                            }
+                        }
+                        &::after{
+                            left: auto;
+                            right: -100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.training-methds{
+    .methds-overlay{
+        .methd{
+            .methd-bottom{
+                .methd-back{
+                    ul{
+                        padding-left: 0;
+                        padding-right: 20px;
+                    }
+                }
+            }
+        }
+    }
+}
+.locations{
+    .owl-locations{
+        .owl-dots{
+            left: auto;
+            right: 50%;
+            transform: translateX(50%);
+            .owl-dot{
+                &::before{
+                    left: auto;
+                    right: 50%;
+                    transform: translate(50%, -50%);
+                }
+            }
+        }
+    }
+}
+.request{
+    .request-right{
+        form{
+            .form-group{
+                .form-control{
+                    &.ad{
+                        padding: 0 15px 0 48px;
+                    }
+                }
+                .ads{
+                    .list-ads{
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+        }
+    }
+}
+.clients-partners{
+    .owl-dots{
+        left: auto;
+        right: 50%;
+        transform: translateX(50%);
+        .owl-dot{
+            &::before{
+                left: auto;
+                right: 50%;
+                transform: translate(50%, -50%);
+            }
+        }
+    }
+}
+.stories{
+    .stories-overlay{
+        .story{
+            .story-content{
+                .story-bottom{
+                    .bottom-body{
+                        .part-story{
+                            .part-body{
+                                ul{
+                                    li{
+                                        i{
+                                            margin-right: 0;
+                                            margin-left: 5px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.people-say{
+    .people-overlay{
+        .people,.tour{
+            .body-people{
+                .owl-people{
+                    .item{
+                        padding-right: 0;
+                        padding-left: 30px;
+                        .item-content{
+                            .media{
+                                img{
+                                    margin-right: 0;
+                                    margin-left: 8px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .tour{
+            .body-tour{
+                .tour-content{
+                    &::after{
+                        left: auto;
+                        right: 50%;
+                        transform: translate(50% , -50%);
+                    }
+                    span{
+                        left: auto;
+                        right: 50%;
+                        transform: translate(50% , -50%);
+                    }
+                }
+                iframe{
+                    left: auto;
+                    right: 0;
+                }
+            }
+        }
+    }
+}
+footer{
+    .footer-top{
+        .foot{
+            ul{
+                li{
+                    i{
+                        margin-right: 0;
+                        margin-left: 23px;
+                    }
+                }
+                &.news{
+                    li{
+                        .media{
+                            img{
+                                margin-right: 0;
+                                margin-left: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.partner{
+    .partner-overlay{
+        .partner-content{
+            .body-partner{
+                .owl-dots{
+                    left: auto;
+                    right: 50%;
+                    transform: translateX(50%);
+                    .owl-dot{
+                        &::before{
+                            left: auto;
+                            right: 50%;
+                            transform: translate(50%, -50%);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.about{
+    .about-overlay{
+        .about-content{
+            .join{
+                .head-join{
+                    h4{
+                        .span-icon{
+                            left: auto;
+                            right: 0;
+                        }
+                    }
+                }
+                .body-join{
+                    .body-content{
+                        form{
+                            .form-group{
+                                .form-control{
+                                    &.phone-input{
+                                        padding-left: 0;
+                                        padding-right: 50px;
+                                    }
+                                }
+                                ul.checkboxs{
+                                    li{
+                                        input{
+                                            margin-right: 0!important;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                }
+                                .drag{
+                                    #text{
+                                        img{
+                                            margin-left: 20px!important;
+                                        }
+                                        .data{
+                                            .remove{
+                                                right: auto;
+                                                left: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.side{
+    .one-side{
+        .body-side{
+            .item-side{
+                .form-control{
+                    &.ad{
+                        padding: 0 15px 0 48px;
+                    }
+                }
+                .ads{
+                    position: relative;
+                    .list-ads{
+                        ul{
+                            li{
+                                a{
+                                    padding: 0 15px 0 48px;
+                                }
+                            }
+                        }
+                    }
+                }
+                ul{
+                    padding-left: 0;
+                    padding-right: 20px;
+                    &.phone{
+                        li{
+                            i{
+                                margin-right: 0;
+                                margin-left: 23px;
+                            }
+                        }
+                    }
+                }
+                .media{
+                    img{
+                        margin-right: 0!important;
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+        .multiseparator{
+            &::before{
+                left: auto;
+                right: 65px;
+            }
+            &::after{
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}
+.details{
+    .details-overlay{
+        .details-content{
+            .teacher{
+                .media{
+                    img,i{
+                        margin-right: 0;
+                        margin-left: 8px;
+                    }
+                }
+            }
+            .wishlist{
+                .wish{
+                    i{
+                        margin-right: 0;
+                        margin-left: 5px;
+                    }
+                }
+            }
+            .head-details{
+                .title-details{
+                    padding-right: 0;
+                    padding-left: 110px;
+                }
+                .show-login{
+                    padding: 20px 45px 15px 25px;
+                    span{
+                        margin-right: 0;
+                        margin-left: 15px;
+                    }
+                    .price{
+                        margin-left: 0;
+                        margin-right: 24px;
+                    }
+                    &::before{
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+            .details-course{
+                .details-content{
+                    ul{
+                        li{
+                            padding: 26px 12px 26px 10px;
+                            i{
+                                margin-right: 0!important;
+                                margin-left: 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            .side{
+                .multiseparator{
+                    &::before{
+                        left: auto;
+                        right: 0;
+                    }
+                }
+            }
+            .detail-course{
+                .bottom-content{
+                    .content{
+                        &.descrip{
+                            .body-disc{
+                                ol{
+                                    padding-left: 0;
+                                    padding-right: 20px;
+                                }
+                            }
+                        }
+                        &.curri{
+                            .head-curri{
+                                h3{
+                                    margin-left: 0;
+                                    margin-right: 30px;
+                                }
+                            }
+                            .body-curri{
+                                .head-body{
+                                    span{
+                                        margin-right: 0;
+                                        margin-left: 10px;
+                                        &.text{
+                                            i{
+                                                margin-left: 0;
+                                                margin-right: 10px;
+                                            }
+                                        }
+                                    }
+                                }
+                                .body-body{
+                                    padding: 20px 53px 0 20px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+            .related{
+                .related-overlay{
+                    .relat{
+                        .body-relat{
+                            .bottom-body{
+                                p{
+                                    i{
+                                        margin-right: 0;
+                                        margin-left: 2px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+.get-course{
+    .get-overlay{
+        .get-content{
+            .right-get{
+                text-align: left;
+                .price-course{
+                    h6{
+                        text-align: left;
+                    }
+                }
+                .anchor-course{
+                    a{
+                        &::after{
+                            left: auto;
+                            right: -100%;
+                        }
+                        &:hover{
+                            &::after{
+                                left: auto;
+                                right: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.people-say{
+    .people-overlay{
+        .people{
+            .body-people{
+                .owl-people{
+                    .owl-nav{
+                        .owl-prev{
+                            right: auto;
+                            left: 0;
+                        }
+                        .owl-next{
+                            right: auto;
+                            left: 36px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+@media(max-width:1199px){
+    .details{
+        .details-overlay{
+            .details-content{
+                .col-lg-3.col-md-12{
+                    padding-left: 0;
+                    padding-right: 15px;
+                }
+            }
+        }
+    }
+}
+@media(max-width:991px){
+    header{
+        .header-top{
+            .navbar{
+                .menu-list{
+                    .menu-links{
+                        margin-left: 0!important;
+                    }
+                }
+            }
+        }
+        .header-bottom{
+            .header-bottom-content{
+                .login{
+                    ul{
+                        li{
+                            .open-search{
+                                i{
+                                    margin-left: 0!important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .details{
+        .details-overlay{
+            .details-content{
+                .col-lg-3.col-md-12{
+                    padding-left: 0;
+                    padding-right: 15px;
+                }
+                .head-details{
+                    .title-details{
+                        padding-left: 0px;
+                    }
+                }
+                .detail-course{
+                    .bottom-content{
+                        .content{
+                            &.curri{
+                                .body-curri{
+                                    .head-body{
+                                        span{
+                                            margin-right: 0;
+                                            margin-left: 5px;
+                                            &.text{
+                                                i{
+                                                    margin-left: 0;
+                                                    margin-right: 5px;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,3 @@
+published at course_group_rate 
+ALTER TABLE `course_group_impact` ADD `published` INT NOT NULL DEFAULT '0' AFTER `course_group_id`;
+ALTER TABLE `course_group_rec` ADD `published` INT NOT NULL DEFAULT '0' AFTER `course_group_id`;

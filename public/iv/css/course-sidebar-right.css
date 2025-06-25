@@ -1,0 +1,50 @@
+
+.list-body {
+    margin: 9px;
+    border-radius: 13px;
+    background-color: #eeeeee;
+    color: #3bcfcb!important;
+
+    padding: 7px;
+    width: 100%;
+
+}
+
+.color-primary {
+    color: #802c41;
+}
+
+.next {
+    width: 47%;
+    display: flex;
+    /* padding: 10px; */
+    border: 1px solid #337ab7;
+    border-radius: 26px;
+    padding: 10px;
+}
+
+button.next {
+    width: 74%;
+    color: white;
+    background-color: #802c41
+}
+
+button.retest {
+    width: 30%;
+    color: white;
+    background-color: #802c41;
+    display: flex;
+    /* padding: 10px; */
+    border: 1px solid #337ab7;
+    border-radius: 26px;
+    padding: 10px;
+
+}
+
+.course-details-category {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: stretch;
+}
+
